@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>IRSAN NETWORK - Hosting GTA SAMP</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+  body {
+    font-family: 'Roboto Mono', monospace, Arial, sans-serif;
+    background: #121212;
+    color: #eee;
+    margin: 0; padding: 0;
+    background-image: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  }
+  header {
+    background: #00ff88;
+    padding: 20px 10px;
+    text-align: center;
+    font-size: 2em;
+    font-weight: 900;
+    color: #121212;
+    letter-spacing: 2px;
+    text-shadow: 1px 1px 4px #003300;
+  }
+  nav {
+    background: #222;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    padding: 15px 0;
+    box-shadow: 0 3px 7px rgba(0,255,136,0.3);
+    user-select: none;
+  }
+  nav button {
+    background: transparent;
+    color: #00ff88;
+    border: 2px solid #00ff88;
+    padding: 10px 22px;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    font-size: 1.1em;
+  }
+  nav button:hover, nav button.active {
+    background: #00ff88;
+    color: #121212;
+    box-shadow: 0 0 15px #00ff88;
+  }
+  section {
+    max-width: 900px;
+    margin: 30px auto 50px;
+    padding: 0 15px 30px;
+    background: rgba(0,255,136,0.08);
+    border-radius: 12px;
+    box-shadow: 0 0 40px rgba(0,255,136,0.2);
+    backdrop-filter: blur(12px);
+  }
+  h2 {
+    color: #00ff88;
+    margin-bottom: 20px;
+    text-shadow: 0 0 6px #00ff88;
+    font-weight: 900;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 18px;
+    background: rgba(0,255,136,0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0,255,136,0.3);
+  }
+  table thead tr {
+    background: #00ff88;
+    color: #121212;
+    font-weight: 900;
+    font-size: 1em;
+  }
+  table th, table td {
+    padding: 12px 15px;
+    border: 1px solid #00ff88;
+    text-align: center;
+    font-size: 0.95em;
+    transition: background 0.3s;
+  }
+  table tbody tr:hover {
+    background: rgba(0,255,136,0.2);
+  }
+  p.info {
+    font-size: 0.9em;
+    color: #ccffcc;
+    margin-top: -12px;
+    margin-bottom: 30px;
+    padding: 15px;
+    background: rgba(0,255,136,0.15);
+    border-radius: 10px;
+    box-shadow: inset 0 0 15px rgba(0,255,136,0.3);
+    line-height: 1.3;
+  }
+  ul {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 30px;
+    font-size: 1.05em;
+  }
+  ul li {
+    margin-bottom: 12px;
+    position: relative;
+    padding-left: 30px;
+    color: #ccffcc;
+  }
+  ul li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #00ff88;
+    font-weight: 900;
+    font-size: 1.3em;
+    line-height: 1;
+  }
+  form label {
+    display: block;
+    margin: 12px 0 8px;
+    font-weight: 600;
+    color: #b2ffbb;
+  }
+  form input[type="text"], form select {
+    width: 100%;
+    padding: 12px 14px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    border: 2px solid #00ff88;
+    background: #0f2c1a;
+    color: #ccffcc;
+    font-size: 1em;
+    transition: border-color 0.3s;
+  }
+  form input[type="text"]:focus, form select:focus {
+    outline: none;
+    border-color: #88ff99;
+    background: #163d26;
+  }
+  form button {
+    background: #00ff88;
+    color: #121212;
+    border: none;
+    padding: 14px 25px;
+    font-weight: 900;
+    cursor: pointer;
+    border-radius: 50px;
+    width: 100%;
+    font-size: 1.1em;
+    box-shadow: 0 0 12px #00ff88;
+    transition: background 0.3s ease;
+  }
+  form button:hover {
+    background: #00cc66;
+    box-shadow: 0 0 20px #00cc66;
+  }
+  footer {
+    text-align: center;
+    padding: 15px 10px;
+    background: #222;
+    color: #555;
+    font-size: 0.95em;
+    font-style: italic;
+    letter-spacing: 1.2px;
+    user-select: none;
+  }
+  @media (max-width: 600px) {
+    nav {
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    table th, table td {
+      font-size: 0.8em;
+      padding: 10px 8px;
+    }
+    header {
+      font-size: 1.5em;
+    }
+  }
+</style>
+</head>
+<body>
+
+<audio id="bgm" loop>
+  <source src="https://s17.aconvert.com/convert/p3r68-cdx67/n0bqy-xvej9.mp3" type="audio/mpeg">
+</audio>
+
+<button onclick="document.getElementById('bgm').play()">KLIK DISINI KALO MAU DENGER MUSIK</button>
+<header>IRSAN NETWORK - Hosting GTA SAMP</header>
+
+<nav>
+  <button class="active" data-target="paket">Paket Hosting</button>
+  <button data-target="upslot">Up Slot Player</button>
+  <button data-target="keuntungan">Keuntungan</button>
+  <button data-target="order">Order Area</button>
+</nav>
+
+<section id="paket" class="content-section">
+  <h2>Pilih Paket Hosting</h2>
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Paket</th><th>Spesifikasi</th><th>Slot</th><th>Harga</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Pelajar</td><td>RAM/Disk/CPU 100%</td><td>100</td><td>20k/bulan</td></tr>
+        <tr><td>Sedang</td><td>RAM/Disk/CPU 100%</td><td>200</td><td>30k/bulan</td></tr>
+        <tr><td>Lumayan</td><td>RAM/Disk/CPU 100%</td><td>250</td><td>35k/bulan</td></tr>
+        <tr><td>Sultan</td><td>RAM/Disk/CPU 100%</td><td>300</td><td>40k/bulan</td></tr>
+        <tr><td>Super High</td><td>RAM/Disk 150GB, CPU 300%</td><td>350</td><td>60k/bulan</td></tr>
+        <tr><td>Ultra</td><td>Unlimited</td><td>450</td><td>85k/bulan</td></tr>
+        <tr><td>Extreme</td><td>Unlimited</td><td>550</td><td>110k/bulan</td></tr>
+        <tr><td>Admin Panel</td><td>-</td><td>-</td><td>30k/bulan</td></tr>
+        <tr><td>Reseller</td><td>-</td><td>-</td><td>40k/bulan</td></tr>
+        <tr><td>Partner</td><td>-</td><td>-</td><td>55k/bulan</td></tr>
+        <tr><td>Owner</td><td>-</td><td>-</td><td>70k/bulan</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="info">
+    Semua paket sudah termasuk: PhpMyAdmin ON, Database ON, Open Port Voice, dan jasa ON server (+10k jika request khusus).<br />
+    Sistem operasi bebas request Linux atau Windows.
+  </p>
+</section>
+
+<style>
+.table-wrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px; /* kecilkan font */
+}
+
+th, td {
+  padding: 6px 10px; /* perkecil padding */
+  border: 1px solid #444;
+  text-align: center;
+  white-space: nowrap; /* supaya tidak pecah baris */
+}
+
+@media screen and (max-width: 600px) {
+  table {
+    font-size: 12px;
+  }
+  th, td {
+    padding: 4px 6px;
+  }
+}
+</style>
+
+
+<section id="upslot" class="content-section" style="display:none;">
+  <h2>Up Slot Player</h2>
+  <p class="info">Butuh slot lebih banyak? Tambah slot dengan harga spesial:</p>
+  <table>
+    <thead>
+      <tr><th>Jumlah Slot</th><th>Harga Tambahan</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>+10 Slot</td><td>10k</td></tr>
+      <tr><td>+20 Slot</td><td>18k</td></tr>
+      <tr><td>+30 Slot</td><td>25k</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="keuntungan" class="content-section" style="display:none;">
+  <h2>Keuntungan Menggunakan Hosting Kami</h2>
+  <ul>
+    <li>Server stabil dan anti lag untuk pengalaman main optimal</li>
+    <li>Support 24/7 via WhatsApp</li>
+    <li>Free upgrade OS sesuai permintaan</li>
+    <li>Database dan PhpMyAdmin sudah aktif langsung</li>
+    <li>Port Voice sudah terbuka, bisa langsung pakai voice chat</li>
+    <li>Jasa ON Server siap membantu (+10k jika request khusus)</li>
+    <li>Harga bersahabat dan transparan</li>
+  </ul>
+</section>
+
+<section id="order" class="content-section" style="display:none;">
+  <h2>Order Hosting</h2>
+  <form id="orderForm" action="#" onsubmit="return submitOrder(event)">
+    <label for="paket">Pilih Paket:</label>
+    <select id="paket" name="paket" required>
+      <option value="" disabled selected>-- Pilih Paket --</option>
+      <option value="Pelajar">Pelajar - 20k/bulan</option>
+      <option value="Sedang">Sedang - 30k/bulan</option>
+      <option value="Lumayan">Lumayan - 35k/bulan</option>
+      <option value="Sultan">Sultan - 40k/bulan</option>
+      <option value="Super High">Super High - 60k/bulan</option>
+      <option value="Ultra">Ultra - 85k/bulan</option>
+      <option value="Extreme">Extreme - 110k/bulan</option>
+      <option value="Admin Panel">Admin Panel</option>
+      <option value="Reseller">Reseller</option>
+      <option value="Partner">Partner</option>
+      <option value="Owner">Owner</option>
+    </select>
+
+    <label for="os">Sistem Operasi:</label>
+    <select id="os" name="os" required>
+      <option value="" disabled selected>-- Pilih Sistem Operasi --</option>
+      <option value="Linux">Linux</option>
+      <option value="Windows">Windows</option>
+    </select>
+
+    <label for="metode">Metode Pembayaran:</label>
+    <select id="metode" name="metode" required>
+      <option value="" disabled selected>-- Pilih Metode --</option>
+      <option value="QRIS">QRIS</option>
+      <option value="Cash">Cash (tidak tersedia sekarang)</option>
+    </select>
+
+    <label for="catatan">Catatan (opsional):</label>
+    <input type="text" id="catatan" name="catatan" placeholder="Misal: Request khusus atau info tambahan" />
+
+    <button type="submit">Order Sekarang</button>
+  </form>
+</section>
+
+<footer>
+  &copy; 2025 IRSAN NETWORK - Hosting GTA SAMP | WhatsApp: 089531633581
+</footer>
+
+<script>
+  // Navigasi tab sederhana
+  const buttons = document.querySelectorAll('nav button');
+  const sections = document.querySelectorAll('.content-section');
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      buttons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const target = btn.getAttribute('data-target');
+      sections.forEach(sec => {
+        sec.style.display = sec.id === target ? 'block' : 'none';
+      });
+    });
+  });
+
+  // Fungsi submit order, kirim ke WhatsApp nomor Anda dengan format terstruktur
+  function submitOrder(event) {
+    event.preventDefault();
+    const paket = document.getElementById('paket').value;
+    const os = document.getElementById('os').value;
+    const metode = document.getElementById('metode').value;
+    const catatan = document.getElementById('catatan').value || "-";
+
+    if(metode === "Cash") {
+      alert("Metode Cash saat ini tidak tersedia, silakan pilih QRIS.");
+      return false;
+    }
+
+    const phone = "6289531633581"; // nomor whatsapp Anda (format internasional tanpa +)
+    const message = encodeURIComponent(
+      `Halo Admin IRSAN NETWORK,%0A` +
+      `Saya ingin order hosting GTA SAMP dengan detail berikut:%0A` +
+      `- Paket: ${paket}%0A` +
+      `- Sistem Operasi: ${os}%0A` +
+      `- Metode Pembayaran: ${metode}%0A` +
+      `- Catatan: ${catatan}%0A%0A` +
+      `Mohon info selanjutnya, terima kasih.`
+    );
+    const url = `https://wa.me/${phone}?text=${message}`;
+    window.open(url, '_blank');
+    return true;
+  }
+</script>
+
+</body>
+</html>
