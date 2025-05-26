@@ -187,15 +187,11 @@
 </head>
 <body>
 
-<audio id="bgm" loop>
-  <source src="https://s17.aconvert.com/convert/p3r68-cdx67/n0bqy-xvej9.mp3" type="audio/mpeg">
-</audio>
-
-<button onclick="document.getElementById('bgm').play()">KLIK DISINI KALO MAU DENGER MUSIK</button>
 <header>IRSAN NETWORK - Hosting GTA SAMP</header>
 
 <nav>
   <button class="active" data-target="paket">Paket Hosting</button>
+  <button data-target="whatsappbot">WhatsApp Bot</button>  
   <button data-target="upslot">Up Slot Player</button>
   <button data-target="keuntungan">Keuntungan</button>
   <button data-target="order">Order Area</button>
@@ -218,10 +214,6 @@
         <tr><td>Super High</td><td>RAM/Disk 150GB, CPU 300%</td><td>350</td><td>60k/bulan</td></tr>
         <tr><td>Ultra</td><td>Unlimited</td><td>450</td><td>85k/bulan</td></tr>
         <tr><td>Extreme</td><td>Unlimited</td><td>550</td><td>110k/bulan</td></tr>
-        <tr><td>Admin Panel</td><td>-</td><td>-</td><td>30k/bulan</td></tr>
-        <tr><td>Reseller</td><td>-</td><td>-</td><td>40k/bulan</td></tr>
-        <tr><td>Partner</td><td>-</td><td>-</td><td>55k/bulan</td></tr>
-        <tr><td>Owner</td><td>-</td><td>-</td><td>70k/bulan</td></tr>
       </tbody>
     </table>
   </div>
@@ -260,6 +252,32 @@ th, td {
 }
 </style>
 
+<section id="whatsappbot" class="content-section" style="display:none;">
+  <h2>Hosting WhatsApp Bot</h2>
+  <p class="info">
+    Hosting khusus WhatsApp Bot cocok untuk penggunaan pribadi, bisnis, atau komunitas. Setiap 1k mendapat 1GB RAM dan Disk. Mulai dari 1k saja!
+  </p>
+  <table>
+    <thead>
+      <tr>
+        <th>Harga</th><th>RAM</th><th>Disk</th><th>Fitur</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>1k</td><td>1 GB</td><td>1 GB</td><td>Bot Personal</td></tr>
+      <tr><td>3k</td><td>3 GB</td><td>3 GB</td><td>Multidevice Ringan</td></tr>
+      <tr><td>5k</td><td>5 GB</td><td>5 GB</td><td>Auto-response, File Bot</td></tr>
+      <tr><td>7k</td><td>7 GB</td><td>7 GB</td><td>Bot Media, Anti-spam</td></tr>
+      <tr><td>10k</td><td>Unlimited</td><td>Unlimited</td><td>Bot Premium, Full Access</td></tr>
+    </tbody>
+  </table>
+  <ul>
+    <li>Sudah termasuk NodeJS, FFmpeg, PM2, dan MongoDB/SQLite</li>
+    <li>Bisa deploy bot Baileys, MultiAuth, atau WWebJS</li>
+    <li>Support 24 Jam dan anti suspend jika bukan abuse</li>
+  </ul>
+</section>
+
 
 <section id="upslot" class="content-section" style="display:none;">
   <h2>Up Slot Player</h2>
@@ -269,9 +287,9 @@ th, td {
       <tr><th>Jumlah Slot</th><th>Harga Tambahan</th></tr>
     </thead>
     <tbody>
-      <tr><td>+10 Slot</td><td>10k</td></tr>
-      <tr><td>+20 Slot</td><td>18k</td></tr>
-      <tr><td>+30 Slot</td><td>25k</td></tr>
+      <tr><td>+20 Slot</td><td>10k</td></tr>
+      <tr><td>+30 Slot</td><td>18k</td></tr>
+      <tr><td>+40 Slot</td><td>25k</td></tr>
     </tbody>
   </table>
 </section>
@@ -302,10 +320,7 @@ th, td {
       <option value="Super High">Super High - 60k/bulan</option>
       <option value="Ultra">Ultra - 85k/bulan</option>
       <option value="Extreme">Extreme - 110k/bulan</option>
-      <option value="Admin Panel">Admin Panel</option>
-      <option value="Reseller">Reseller</option>
-      <option value="Partner">Partner</option>
-      <option value="Owner">Owner</option>
+      <option value="Bot WhatsApp">Bot WhatsApp</option> <!-- Paket baru -->
     </select>
 
     <label for="os">Sistem Operasi:</label>
@@ -313,12 +328,18 @@ th, td {
       <option value="" disabled selected>-- Pilih Sistem Operasi --</option>
       <option value="Linux">Linux</option>
       <option value="Windows">Windows</option>
+      <option value="Kosong">klik ini kalo hosting WhatsApp</option>
     </select>
 
     <label for="metode">Metode Pembayaran:</label>
     <select id="metode" name="metode" required>
       <option value="" disabled selected>-- Pilih Metode --</option>
       <option value="QRIS">QRIS</option>
+      <option value="DANA">DANA</option>
+      <option value="BANK">BANK</option>
+      <option value="SHOPEE">SHOPEE</option>
+      <option value="GOPAY">GOPAY</option>
+      <option value="OVO">OVO</option>
       <option value="Cash">Cash (tidak tersedia sekarang)</option>
     </select>
 
@@ -326,8 +347,14 @@ th, td {
     <input type="text" id="catatan" name="catatan" placeholder="Misal: Request khusus atau info tambahan" />
 
     <button type="submit">Order Sekarang</button>
+    
+    <button type="button" onclick="openFeedback()">Kirim Feedback</button>
   </form>
+  <div id="loading" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:#000000aa; color:#fff; font-size:20px; text-align:center; padding-top:200px; z-index:9999;">
+    Mengarahkan ke WhatsApp...
+  </div>
 </section>
+
 
 <footer>
   &copy; 2025 IRSAN NETWORK - Hosting GTA SAMP | WhatsApp: 089531633581
@@ -347,35 +374,45 @@ th, td {
       });
     });
   });
+  
+  function openFeedback() {
+    const phone = "6289531633581"; // ganti dengan nomor admin
+    const message = encodeURIComponent("Halo Admin, saya ingin memberikan feedback mengenai layanan IRSAN NETWORK:");
+    window.open(`https://wa.me/${phone}?text=${message}`, "_blank");
+  }
 
-  // Fungsi submit order, kirim ke WhatsApp nomor Anda dengan format terstruktur
+  // Fungsi submit order, kirim ke WhatsApp bot dengan format rapi
   function submitOrder(event) {
     event.preventDefault();
-    const paket = document.getElementById('paket').value;
-    const os = document.getElementById('os').value;
-    const metode = document.getElementById('metode').value;
-    const catatan = document.getElementById('catatan').value || "-";
 
-    if(metode === "Cash") {
+    const paket = document.getElementById('paket').value.trim();
+    const os = document.getElementById('os').value.trim();
+    const metode = document.getElementById('metode').value.trim();
+    const catatan = document.getElementById('catatan').value.trim() || "-";
+
+    if (metode === "Cash") {
       alert("Metode Cash saat ini tidak tersedia, silakan pilih QRIS.");
       return false;
     }
 
-    const phone = "6289531633581"; // nomor whatsapp Anda (format internasional tanpa +)
-    const message = encodeURIComponent(
-      `Halo Admin IRSAN NETWORK,%0A` +
-      `Saya ingin order hosting GTA SAMP dengan detail berikut:%0A` +
-      `- Paket: ${paket}%0A` +
-      `- Sistem Operasi: ${os}%0A` +
-      `- Metode Pembayaran: ${metode}%0A` +
-      `- Catatan: ${catatan}%0A%0A` +
-      `Mohon info selanjutnya, terima kasih.`
-    );
-    const url = `https://wa.me/${phone}?text=${message}`;
+    const phone = "6289531633581"; // nomor WhatsApp tujuan
+    const message =
+      `Halo Admin IRSAN NETWORK,\n` +
+      `Saya ingin order *Hosting GTA SAMP* dengan detail berikut:\n\n` +
+      `• Paket: *${paket}*\n` +
+      `• Sistem Operasi: *${os}*\n` +
+      `• Metode Pembayaran: *${metode}*\n` +
+      `• Catatan Tambahan: *${catatan}*\n\n` +
+      `Mohon info selanjutnya, terima kasih.`;
+
+    const encodedMessage = encodeURIComponent(message);
+    const url = `https://wa.me/${phone}?text=${encodedMessage}`;
     window.open(url, '_blank');
+
     return true;
   }
 </script>
+
 
 </body>
 </html>
