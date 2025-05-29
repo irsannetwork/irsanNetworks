@@ -1,418 +1,206 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>IRSAN NETWORK - Hosting GTA SAMP</title>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
-  body {
-    font-family: 'Roboto Mono', monospace, Arial, sans-serif;
-    background: #121212;
-    color: #eee;
-    margin: 0; padding: 0;
-    background-image: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-  }
-  header {
-    background: #00ff88;
-    padding: 20px 10px;
-    text-align: center;
-    font-size: 2em;
-    font-weight: 900;
-    color: #121212;
-    letter-spacing: 2px;
-    text-shadow: 1px 1px 4px #003300;
-  }
-  nav {
-    background: #222;
-    display: flex;
-    justify-content: center;
-    gap: 25px;
-    padding: 15px 0;
-    box-shadow: 0 3px 7px rgba(0,255,136,0.3);
-    user-select: none;
-  }
-  nav button {
-    background: transparent;
-    color: #00ff88;
-    border: 2px solid #00ff88;
-    padding: 10px 22px;
-    cursor: pointer;
-    font-weight: bold;
-    border-radius: 50px;
-    transition: all 0.3s ease;
-    font-size: 1.1em;
-  }
-  nav button:hover, nav button.active {
-    background: #00ff88;
-    color: #121212;
-    box-shadow: 0 0 15px #00ff88;
-  }
-  section {
-    max-width: 900px;
-    margin: 30px auto 50px;
-    padding: 0 15px 30px;
-    background: rgba(0,255,136,0.08);
-    border-radius: 12px;
-    box-shadow: 0 0 40px rgba(0,255,136,0.2);
-    backdrop-filter: blur(12px);
-  }
-  h2 {
-    color: #00ff88;
-    margin-bottom: 20px;
-    text-shadow: 0 0 6px #00ff88;
-    font-weight: 900;
-  }
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 18px;
-    background: rgba(0,255,136,0.1);
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 0 20px rgba(0,255,136,0.3);
-  }
-  table thead tr {
-    background: #00ff88;
-    color: #121212;
-    font-weight: 900;
-    font-size: 1em;
-  }
-  table th, table td {
-    padding: 12px 15px;
-    border: 1px solid #00ff88;
-    text-align: center;
-    font-size: 0.95em;
-    transition: background 0.3s;
-  }
-  table tbody tr:hover {
-    background: rgba(0,255,136,0.2);
-  }
-  p.info {
-    font-size: 0.9em;
-    color: #ccffcc;
-    margin-top: -12px;
-    margin-bottom: 30px;
-    padding: 15px;
-    background: rgba(0,255,136,0.15);
-    border-radius: 10px;
-    box-shadow: inset 0 0 15px rgba(0,255,136,0.3);
-    line-height: 1.3;
-  }
-  ul {
-    list-style: none;
-    padding-left: 0;
-    margin-bottom: 30px;
-    font-size: 1.05em;
-  }
-  ul li {
-    margin-bottom: 12px;
-    position: relative;
-    padding-left: 30px;
-    color: #ccffcc;
-  }
-  ul li::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0;
-    color: #00ff88;
-    font-weight: 900;
-    font-size: 1.3em;
-    line-height: 1;
-  }
-  form label {
-    display: block;
-    margin: 12px 0 8px;
-    font-weight: 600;
-    color: #b2ffbb;
-  }
-  form input[type="text"], form select {
-    width: 100%;
-    padding: 12px 14px;
-    margin-bottom: 20px;
-    border-radius: 8px;
-    border: 2px solid #00ff88;
-    background: #0f2c1a;
-    color: #ccffcc;
-    font-size: 1em;
-    transition: border-color 0.3s;
-  }
-  form input[type="text"]:focus, form select:focus {
-    outline: none;
-    border-color: #88ff99;
-    background: #163d26;
-  }
-  form button {
-    background: #00ff88;
-    color: #121212;
-    border: none;
-    padding: 14px 25px;
-    font-weight: 900;
-    cursor: pointer;
-    border-radius: 50px;
-    width: 100%;
-    font-size: 1.1em;
-    box-shadow: 0 0 12px #00ff88;
-    transition: background 0.3s ease;
-  }
-  form button:hover {
-    background: #00cc66;
-    box-shadow: 0 0 20px #00cc66;
-  }
-  footer {
-    text-align: center;
-    padding: 15px 10px;
-    background: #222;
-    color: #555;
-    font-size: 0.95em;
-    font-style: italic;
-    letter-spacing: 1.2px;
-    user-select: none;
-  }
-  @media (max-width: 600px) {
-    nav {
-      flex-wrap: wrap;
-      gap: 12px;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hosting Packages</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
-    table th, table td {
-      font-size: 0.8em;
-      padding: 10px 8px;
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 20px;
+      position: relative;
+      overflow: visible;
     }
-    header {
-      font-size: 1.5em;
+
+    /* Watermark - Irsan Network */
+    body::before {
+      content: "Irsan Network";
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(-45deg);
+      font-size: 8rem;
+      font-weight: 900;
+      color: rgba(255, 255, 255, 0.05);
+      pointer-events: none;
+      user-select: none;
+      z-index: 0;
+      white-space: nowrap;
+      font-family: 'Poppins', sans-serif;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.1);
     }
-  }
-</style>
+
+    .container {
+      max-width: 800px;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 15px;
+      padding: 40px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(8px);
+      position: relative;
+      z-index: 1;
+      overflow-y: auto;
+      max-height: 90vh;
+    }
+    h1 {
+      font-size: 3rem;
+      font-weight: 600;
+      margin-bottom: 0.5em;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.4);
+    }
+    h2 {
+      font-size: 2rem;
+      margin: 1.5em 0;
+    }
+    .package {
+      background: rgba(255, 255, 255, 0.25);
+      border-radius: 10px;
+      padding: 20px;
+      margin: 12px 0;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+      text-align: left;
+    }
+    .package h3 {
+      margin-bottom: 0.75em;
+    }
+    p {
+      font-size: 1.1rem;
+      margin: 0.3em 0;
+      line-height: 1.4;
+    }
+    button {
+      background-color: #ff6b6b;
+      border: none;
+      padding: 15px 40px;
+      font-size: 1.2rem;
+      font-weight: 700;
+      border-radius: 50px;
+      color: #fff;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(255, 107, 107, 0.6);
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      margin-top: 2rem;
+      display: inline-block;
+    }
+    button:hover {
+      background-color: #ff4757;
+      box-shadow: 0 6px 20px rgba(255, 71, 87, 0.8);
+    }
+    footer {
+      margin-top: 3em;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.6);
+      text-shadow: none;
+    }
+  </style>
 </head>
 <body>
+  <div class="container" tabindex="0">
+    <h1>PAKET HOSTING IRSAN SAMP</h1>
+    <h2>Pilih Paket yang Sesuai untuk Anda</h2>
 
-<header>IRSAN NETWORK - Hosting GTA SAMP</header>
+    <div class="package">
+      <h3>💸 Paket Pelajar</h3>
+      <p>RAM: 100GB 💶</p>
+      <p>Disk: 100GB 💶</p>
+      <p>CPU: 100%</p>
+      <p>PhpMyAdmin: ON</p>
+      <p>Database: ON</p>
+      <p>Slot Player: 100</p>
+      <p>Open Port Voice: Ya</p>
+      <p>Sistem Operasi: Bebas Request Linux/Windows</p>
+      <p>Jasa ON Server: +10k</p>
+      <p>Harga: 15k/bulan (tanpa jasa ON Server)</p>
+      <p>Harga dengan Jasa ON Server: 25k/bulan</p>
+    </div>
 
-<nav>
-  <button class="active" data-target="paket">Paket Hosting</button>
-  <button data-target="whatsappbot">WhatsApp Bot</button>  
-  <button data-target="upslot">Up Slot Player</button>
-  <button data-target="keuntungan">Keuntungan</button>
-  <button data-target="order">Order Area</button>
-</nav>
+    <div class="package">
+      <h3>💸 Paket Biasa</h3>
+      <p>RAM: 200GB 💶</p>
+      <p>Disk: 200GB 💶</p>
+      <p>CPU: 200%</p>
+      <p>PhpMyAdmin: ON</p>
+      <p>Database: ON</p>
+      <p>Slot Player: 150</p>
+      <p>Open Port Voice: Ya</p>
+      <p>Sistem Operasi: Bebas Request Linux/Windows</p>
+      <p>Jasa ON Server: +10k</p>
+      <p>Harga: 25k/bulan (tanpa jasa ON Server)</p>
+      <p>Harga dengan Jasa ON Server: 35k/bulan</p>
+    </div>
 
-<section id="paket" class="content-section">
-  <h2>Pilih Paket Hosting</h2>
-  <div class="table-wrapper">
-    <table>
-      <thead>
-        <tr>
-          <th>Paket</th><th>Spesifikasi</th><th>Slot</th><th>Harga</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td>Pelajar</td><td>RAM/Disk/CPU 100%</td><td>100</td><td>20k/bulan</td></tr>
-        <tr><td>Sedang</td><td>RAM/Disk/CPU 100%</td><td>200</td><td>30k/bulan</td></tr>
-        <tr><td>Lumayan</td><td>RAM/Disk/CPU 100%</td><td>250</td><td>35k/bulan</td></tr>
-        <tr><td>Sultan</td><td>RAM/Disk/CPU 100%</td><td>300</td><td>40k/bulan</td></tr>
-        <tr><td>Super High</td><td>RAM/Disk 150GB, CPU 300%</td><td>350</td><td>60k/bulan</td></tr>
-        <tr><td>Ultra</td><td>Unlimited</td><td>450</td><td>85k/bulan</td></tr>
-        <tr><td>Extreme</td><td>Unlimited</td><td>550</td><td>110k/bulan</td></tr>
-      </tbody>
-    </table>
+    <div class="package">
+      <h3>💸 Paket Menengah</h3>
+      <p>RAM: 300GB 💶</p>
+      <p>Disk: 300GB 💶</p>
+      <p>CPU: 300%</p>
+      <p>PhpMyAdmin: ON</p>
+      <p>Database: ON</p>
+      <p>Slot Player: 200</p>
+      <p>Open Port Voice: Ya</p>
+      <p>Sistem Operasi: Bebas Request Linux/Windows</p>
+      <p>Jasa ON Server: +10k</p>
+      <p>Harga: 35k/bulan (tanpa jasa ON Server)</p>
+      <p>Harga dengan Jasa ON Server: 45k/bulan</p>
+    </div>
+
+    <div class="package">
+      <h3>💸 Paket Sultan</h3>
+      <p>RAM: 350GB 💶</p>
+      <p>Disk: 350GB 💶</p>
+      <p>CPU: 400%</p>
+      <p>PhpMyAdmin: ON</p>
+      <p>Database: ON</p>
+      <p>Slot Player: 250</p>
+      <p>Open Port Voice: Ya</p>
+      <p>Sistem Operasi: Bebas Request Linux/Windows</p>
+      <p>Jasa ON Server: +10k</p>
+      <p>Harga: 45k/bulan (tanpa jasa ON Server)</p>
+      <p>Harga dengan Jasa ON Server: 55k/bulan</p>
+    </div>
+
+    <div class="package">
+      <h3>💸 Paket Sultan High</h3>
+      <p>RAM: 350GB 💶</p>
+      <p>Disk: 350GB 💶</p>
+      <p>CPU: 450%</p>
+      <p>PhpMyAdmin: ON</p>
+      <p>Database: ON</p>
+      <p>Slot Player: 250</p>
+      <p>Open Port Voice: Ya</p>
+      <p>Sistem Operasi: Bebas Request Linux/Windows</p>
+      <p>Jasa ON Server: +10k</p>
+      <p>Harga: 55k/bulan (tanpa jasa ON Server)</p>
+      <p>Harga dengan Jasa ON Server: 65k/bulan</p>
+    </div>
+
+    <button id="orderBtn">Order Sekarang</button>
+    <footer>© 2024 Irsan Network. Semua Hak Dilindungi.</footer>
   </div>
-  <p class="info">
-    Semua paket sudah termasuk: PhpMyAdmin ON, Database ON, Open Port Voice, dan jasa ON server (+10k jika request khusus).<br />
-    Sistem operasi bebas request Linux atau Windows.
-  </p>
-</section>
 
-<style>
-.table-wrapper {
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 14px; /* kecilkan font */
-}
-
-th, td {
-  padding: 6px 10px; /* perkecil padding */
-  border: 1px solid #444;
-  text-align: center;
-  white-space: nowrap; /* supaya tidak pecah baris */
-}
-
-@media screen and (max-width: 600px) {
-  table {
-    font-size: 12px;
-  }
-  th, td {
-    padding: 4px 6px;
-  }
-}
-</style>
-
-<section id="whatsappbot" class="content-section" style="display:none;">
-  <h2>Hosting WhatsApp Bot</h2>
-  <p class="info">
-    Hosting khusus WhatsApp Bot cocok untuk penggunaan pribadi, bisnis, atau komunitas. Setiap 1k mendapat 1GB RAM dan Disk. Mulai dari 1k saja!
-  </p>
-  <table>
-    <thead>
-      <tr>
-        <th>Harga</th><th>RAM</th><th>Disk</th><th>Fitur</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr><td>1k</td><td>1 GB</td><td>1 GB</td><td>Bot Personal</td></tr>
-      <tr><td>3k</td><td>3 GB</td><td>3 GB</td><td>Multidevice Ringan</td></tr>
-      <tr><td>5k</td><td>5 GB</td><td>5 GB</td><td>Auto-response, File Bot</td></tr>
-      <tr><td>7k</td><td>7 GB</td><td>7 GB</td><td>Bot Media, Anti-spam</td></tr>
-      <tr><td>10k</td><td>Unlimited</td><td>Unlimited</td><td>Bot Premium, Full Access</td></tr>
-    </tbody>
-  </table>
-  <ul>
-    <li>Sudah termasuk NodeJS, FFmpeg, PM2, dan MongoDB/SQLite</li>
-    <li>Bisa deploy bot Baileys, MultiAuth, atau WWebJS</li>
-    <li>Support 24 Jam dan anti suspend jika bukan abuse</li>
-  </ul>
-</section>
-
-
-<section id="upslot" class="content-section" style="display:none;">
-  <h2>Up Slot Player</h2>
-  <p class="info">Butuh slot lebih banyak? Tambah slot dengan harga spesial:</p>
-  <table>
-    <thead>
-      <tr><th>Jumlah Slot</th><th>Harga Tambahan</th></tr>
-    </thead>
-    <tbody>
-      <tr><td>+20 Slot</td><td>10k</td></tr>
-      <tr><td>+30 Slot</td><td>18k</td></tr>
-      <tr><td>+40 Slot</td><td>25k</td></tr>
-    </tbody>
-  </table>
-</section>
-
-<section id="keuntungan" class="content-section" style="display:none;">
-  <h2>Keuntungan Menggunakan Hosting Kami</h2>
-  <ul>
-    <li>Server stabil dan anti lag untuk pengalaman main optimal</li>
-    <li>Support 24/7 via WhatsApp</li>
-    <li>Free upgrade OS sesuai permintaan</li>
-    <li>Database dan PhpMyAdmin sudah aktif langsung</li>
-    <li>Port Voice sudah terbuka, bisa langsung pakai voice chat</li>
-    <li>Jasa ON Server siap membantu (+10k jika request khusus)</li>
-    <li>Harga bersahabat dan transparan</li>
-  </ul>
-</section>
-
-<section id="order" class="content-section" style="display:none;">
-  <h2>Order Hosting</h2>
-  <form id="orderForm" action="#" onsubmit="return submitOrder(event)">
-    <label for="paket">Pilih Paket:</label>
-    <select id="paket" name="paket" required>
-      <option value="" disabled selected>-- Pilih Paket --</option>
-      <option value="Pelajar">Pelajar - 20k/bulan</option>
-      <option value="Sedang">Sedang - 30k/bulan</option>
-      <option value="Lumayan">Lumayan - 35k/bulan</option>
-      <option value="Sultan">Sultan - 40k/bulan</option>
-      <option value="Super High">Super High - 60k/bulan</option>
-      <option value="Ultra">Ultra - 85k/bulan</option>
-      <option value="Extreme">Extreme - 110k/bulan</option>
-      <option value="Bot WhatsApp">Bot WhatsApp</option> <!-- Paket baru -->
-    </select>
-
-    <label for="os">Sistem Operasi:</label>
-    <select id="os" name="os" required>
-      <option value="" disabled selected>-- Pilih Sistem Operasi --</option>
-      <option value="Linux">Linux</option>
-      <option value="Windows">Windows</option>
-      <option value="Kosong">klik ini kalo hosting WhatsApp</option>
-    </select>
-
-    <label for="metode">Metode Pembayaran:</label>
-    <select id="metode" name="metode" required>
-      <option value="" disabled selected>-- Pilih Metode --</option>
-      <option value="QRIS">QRIS</option>
-      <option value="DANA">DANA</option>
-      <option value="BANK">BANK</option>
-      <option value="SHOPEE">SHOPEE</option>
-      <option value="GOPAY">GOPAY</option>
-      <option value="OVO">OVO</option>
-      <option value="Cash">Cash (tidak tersedia sekarang)</option>
-    </select>
-
-    <label for="catatan">Catatan (opsional):</label>
-    <input type="text" id="catatan" name="catatan" placeholder="Misal: Request khusus atau info tambahan" />
-
-    <button type="submit">Order Sekarang</button>
-    
-    <button type="button" onclick="openFeedback()">Kirim Feedback</button>
-  </form>
-  <div id="loading" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:#000000aa; color:#fff; font-size:20px; text-align:center; padding-top:200px; z-index:9999;">
-    Mengarahkan ke WhatsApp...
-  </div>
-</section>
-
-
-<footer>
-  &copy; 2025 IRSAN NETWORK - Hosting GTA SAMP | WhatsApp: 089531633581
-</footer>
-
-<script>
-  // Navigasi tab sederhana
-  const buttons = document.querySelectorAll('nav button');
-  const sections = document.querySelectorAll('.content-section');
-  buttons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      buttons.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const target = btn.getAttribute('data-target');
-      sections.forEach(sec => {
-        sec.style.display = sec.id === target ? 'block' : 'none';
-      });
+  <script>
+    const orderBtn = document.getElementById('orderBtn');
+    orderBtn.addEventListener('click', () => {
+      // Replace with your Discord server invite link
+      const discordInvite = "https://discord.gg/eUtfp2sF7E";
+      window.open(discordInvite, "_blank");
     });
-  });
-  
-  function openFeedback() {
-    const phone = "6289531633581"; // ganti dengan nomor admin
-    const message = encodeURIComponent("Halo Admin, saya ingin memberikan feedback mengenai layanan IRSAN NETWORK:");
-    window.open(`https://wa.me/${phone}?text=${message}`, "_blank");
-  }
-
-  // Fungsi submit order, kirim ke WhatsApp bot dengan format rapi
-  function submitOrder(event) {
-    event.preventDefault();
-
-    const paket = document.getElementById('paket').value.trim();
-    const os = document.getElementById('os').value.trim();
-    const metode = document.getElementById('metode').value.trim();
-    const catatan = document.getElementById('catatan').value.trim() || "-";
-
-    if (metode === "Cash") {
-      alert("Metode Cash saat ini tidak tersedia, silakan pilih QRIS.");
-      return false;
-    }
-
-    const phone = "6289531633581"; // nomor WhatsApp tujuan
-    const message =
-      `Halo Admin IRSAN NETWORK,\n` +
-      `Saya ingin order *Hosting GTA SAMP* dengan detail berikut:\n\n` +
-      `• Paket: *${paket}*\n` +
-      `• Sistem Operasi: *${os}*\n` +
-      `• Metode Pembayaran: *${metode}*\n` +
-      `• Catatan Tambahan: *${catatan}*\n\n` +
-      `Mohon info selanjutnya, terima kasih.`;
-
-    const encodedMessage = encodeURIComponent(message);
-    const url = `https://wa.me/${phone}?text=${encodedMessage}`;
-    window.open(url, '_blank');
-
-    return true;
-  }
-</script>
-
-
+  </script>
 </body>
 </html>
+
