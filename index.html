@@ -11,6 +11,7 @@
   <title>Hosting Irsan Network</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
+
     /* Basic Reset */
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
@@ -221,9 +222,12 @@
   <div class="top-bar"> Penawaran Terbatas! Hosting Mulai 15K/Bulan</div>
   <div class="floating-text"> Hosting Ramai Order </div>
 
-  <div class="container">
+<div class="container">
     <h1>PAKET HOSTING IRSAN SAMP</h1>
-
+    <button id="tryButton" onclick="cobaKeberuntungan()" class="btn-order">🎯 Coba Keberuntungan</button>
+    <div id="resultText" style="display:none; margin-top:20px; font-size:1.6rem; font-weight:bold;"></div>
+    
+    
     <div class="package">
       <h3> Paket Pelajar</h3>
       <p>RAM: 100GB</p>
@@ -302,3 +306,44 @@
   <footer>© 2025 Irsan Network. All rights reserved.</footer>
 </body>
 </html>
+
+<script>
+  let sudahDicoba = false;
+
+  function cobaKeberuntungan() {
+    if (sudahDicoba) {
+      alert("Kamu sudah mencoba keberuntunganmu!");
+      return;
+    }
+
+    sudahDicoba = true;
+    document.getElementById("tryButton").disabled = true;
+    document.getElementById("tryButton").innerText = "Menentukan diskon...";
+
+    setTimeout(() => {
+      const peluang = Math.random();
+      let diskon;
+
+      if (peluang < 0.5) {
+        diskon = 5;
+      } else if (peluang < 0.75) {
+        diskon = 10;
+      } else if (peluang < 0.9) {
+        diskon = 15;
+      } else if (peluang < 0.97) {
+        diskon = 20;
+      } else if (peluang < 0.99) {
+        diskon = 25;
+      } else {
+        diskon = 50; // Sangat langka!
+      }
+
+      const teksHasil = `🎉 Selamat! Kamu mendapatkan diskon sebesar <span style="color: yellow">${diskon}%</span> Silahkan Screenshot Kirim Ke Admin`;
+
+      document.getElementById("resultText").innerHTML = teksHasil;
+      document.getElementById("resultText").style.display = "block";
+      document.getElementById("tryButton").innerText = "Sudah Dicoba";
+
+    }, 2000); // Delay 2 detik untuk efek suspense
+  }
+</script>
