@@ -1,35 +1,108 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Hosting Packages</title>
+  <meta name="description" content="Hosting SA-MP Murah Berkualitas | Irsan Network" />
+  <meta property="og:title" content="Hosting Irsan Network">
+  <meta property="og:description" content="Paket Hosting SA-MP Mulai 15K/Bulan | Kualitas Premium, Harga Murah">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://i.imgur.com/NMZzZbM.png">
+  <title>Hosting Irsan Network</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    /* Basic Reset */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: linear-gradient(-45deg, #667eea, #764ba2, #6dd5ed, #2193b0);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
       color: #fff;
       min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 20px;
       position: relative;
-      overflow: visible;
+      overflow-x: hidden;
     }
 
-    /* Watermark - Irsan Network */
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .stars {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: transparent url('https://i.imgur.com/NMZzZbM.png') repeat;
+      animation: starsAnim 120s linear infinite;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    @keyframes starsAnim {
+      0% {background-position: 0 0;}
+      100% {background-position: 10000px 5000px;}
+    }
+
+    .loading-screen {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      animation: fadeOut 2s ease 2s forwards;
+    }
+
+    @keyframes fadeOut {
+      to { opacity: 0; visibility: hidden; }
+    }
+
+    .loading-screen h1 {
+      color: #fff;
+      font-size: 2.2rem;
+      animation: blink 1.5s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    .top-bar {
+      background: rgba(0, 0, 0, 0.4);
+      text-align: center;
+      padding: 12px;
+      font-weight: bold;
+      z-index: 10;
+      position: sticky;
+      top: 0;
+    }
+
+    .floating-text {
+      position: absolute;
+      top: 20px;
+      right: 10px;
+      background: rgba(0, 0, 0, 0.4);
+      padding: 10px 20px;
+      border-radius: 20px;
+      animation: float 4s ease-in-out infinite;
+      font-size: 0.9rem;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0); }
+    }
+
     body::before {
       content: "Irsan Network";
       position: fixed;
-      top: 50%;
+      top: 60%;
       left: 50%;
       transform: translate(-50%, -50%) rotate(-45deg);
       font-size: 8rem;
@@ -38,169 +111,165 @@
       pointer-events: none;
       user-select: none;
       z-index: 0;
-      white-space: nowrap;
-      font-family: 'Poppins', sans-serif;
-      text-shadow: 2px 2px 6px rgba(0,0,0,0.1);
     }
 
     .container {
-      max-width: 800px;
-      background: rgba(255, 255, 255, 0.15);
-      border-radius: 15px;
-      padding: 40px;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-      backdrop-filter: blur(8px);
+      max-width: 900px;
+      margin: auto;
+      padding: 40px 20px;
       position: relative;
-      z-index: 1;
-      overflow-y: auto;
-      max-height: 90vh;
+      z-index: 2;
     }
+
     h1 {
+      text-align: center;
       font-size: 3rem;
-      font-weight: 600;
-      margin-bottom: 0.5em;
-      text-transform: uppercase;
-      letter-spacing: 2px;
+      margin-bottom: 30px;
       text-shadow: 2px 2px 6px rgba(0,0,0,0.4);
     }
-    h2 {
-      font-size: 2rem;
-      margin: 1.5em 0;
-    }
+
     .package {
-      background: rgba(255, 255, 255, 0.25);
-      border-radius: 10px;
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(6px);
+      border-radius: 12px;
       padding: 20px;
-      margin: 12px 0;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
-      text-align: left;
+      margin: 20px 0;
+      transition: all 0.3s ease;
+      animation: fadeInUp 0.6s ease forwards;
+      opacity: 0;
+      transform: translateY(30px);
     }
+
+    .package:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 20px rgba(255,255,255,0.3);
+    }
+
     .package h3 {
-      margin-bottom: 0.75em;
+      margin-bottom: 10px;
     }
-    p {
-      font-size: 1.1rem;
-      margin: 0.3em 0;
+
+    .package p {
+      font-size: 0.95rem;
       line-height: 1.4;
     }
-    button {
-      background-color: #ff6b6b;
-      border: none;
-      padding: 15px 40px;
-      font-size: 1.2rem;
-      font-weight: 700;
-      border-radius: 50px;
-      color: #fff;
-      cursor: pointer;
-      box-shadow: 0 4px 15px rgba(255, 107, 107, 0.6);
-      transition: background-color 0.3s ease, box-shadow 0.3s ease;
-      margin-top: 2rem;
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .btn-order {
+      margin-top: 20px;
       display: inline-block;
+      padding: 10px 25px;
+      background: #ff6b6b;
+      color: #fff;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s ease;
     }
-    button:hover {
-      background-color: #ff4757;
-      box-shadow: 0 6px 20px rgba(255, 71, 87, 0.8);
+
+    .btn-order:hover {
+      background: #ff4757;
+      transform: scale(1.05);
     }
+
+    table {
+      width: 100%;
+      margin-top: 2rem;
+      border-collapse: collapse;
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(8px);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    th, td {
+      padding: 12px 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+      color: #fff;
+      text-align: left;
+    }
+
+    th {
+      background: rgba(0,0,0,0.3);
+      font-weight: 600;
+    }
+
     footer {
-      margin-top: 3em;
+      text-align: center;
+      margin: 40px 0 20px;
       font-size: 0.9rem;
       color: rgba(255,255,255,0.6);
-      text-shadow: none;
     }
+
+    a { color: #00e6e6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
-  <div class="container" tabindex="0">
-    <h1>PAKET HOSTING IRSAN SAMP</h1>
-    <h2>Pilih Paket yang Sesuai untuk Anda</h2>
+  <div class="stars"></div>
 
-    <div class="package">
-      <h3>💸 Paket Pelajar</h3>
-      <p>RAM: 100GB 💶</p>
-      <p>Disk: 100GB 💶</p>
-      <p>CPU: 100%</p>
-      <p>PhpMyAdmin: ON</p>
-      <p>Database: ON</p>
-      <p>Slot Player: 100</p>
-      <p>Open Port Voice: Ya</p>
-      <p>Sistem Operasi: Bebas Request Linux/Windows</p>
-      <p>Jasa ON Server: +10k</p>
-      <p>Harga: 15k/bulan (tanpa jasa ON Server)</p>
-      <p>Harga dengan Jasa ON Server: 25k/bulan</p>
-    </div>
-
-    <div class="package">
-      <h3>💸 Paket Biasa</h3>
-      <p>RAM: 200GB 💶</p>
-      <p>Disk: 200GB 💶</p>
-      <p>CPU: 200%</p>
-      <p>PhpMyAdmin: ON</p>
-      <p>Database: ON</p>
-      <p>Slot Player: 150</p>
-      <p>Open Port Voice: Ya</p>
-      <p>Sistem Operasi: Bebas Request Linux/Windows</p>
-      <p>Jasa ON Server: +10k</p>
-      <p>Harga: 25k/bulan (tanpa jasa ON Server)</p>
-      <p>Harga dengan Jasa ON Server: 35k/bulan</p>
-    </div>
-
-    <div class="package">
-      <h3>💸 Paket Menengah</h3>
-      <p>RAM: 300GB 💶</p>
-      <p>Disk: 300GB 💶</p>
-      <p>CPU: 300%</p>
-      <p>PhpMyAdmin: ON</p>
-      <p>Database: ON</p>
-      <p>Slot Player: 200</p>
-      <p>Open Port Voice: Ya</p>
-      <p>Sistem Operasi: Bebas Request Linux/Windows</p>
-      <p>Jasa ON Server: +10k</p>
-      <p>Harga: 35k/bulan (tanpa jasa ON Server)</p>
-      <p>Harga dengan Jasa ON Server: 45k/bulan</p>
-    </div>
-
-    <div class="package">
-      <h3>💸 Paket Sultan</h3>
-      <p>RAM: 350GB 💶</p>
-      <p>Disk: 350GB 💶</p>
-      <p>CPU: 400%</p>
-      <p>PhpMyAdmin: ON</p>
-      <p>Database: ON</p>
-      <p>Slot Player: 250</p>
-      <p>Open Port Voice: Ya</p>
-      <p>Sistem Operasi: Bebas Request Linux/Windows</p>
-      <p>Jasa ON Server: +10k</p>
-      <p>Harga: 45k/bulan (tanpa jasa ON Server)</p>
-      <p>Harga dengan Jasa ON Server: 55k/bulan</p>
-    </div>
-
-    <div class="package">
-      <h3>💸 Paket Sultan High</h3>
-      <p>RAM: 350GB 💶</p>
-      <p>Disk: 350GB 💶</p>
-      <p>CPU: 450%</p>
-      <p>PhpMyAdmin: ON</p>
-      <p>Database: ON</p>
-      <p>Slot Player: 250</p>
-      <p>Open Port Voice: Ya</p>
-      <p>Sistem Operasi: Bebas Request Linux/Windows</p>
-      <p>Jasa ON Server: +10k</p>
-      <p>Harga: 55k/bulan (tanpa jasa ON Server)</p>
-      <p>Harga dengan Jasa ON Server: 65k/bulan</p>
-    </div>
-
-    <button id="orderBtn">Order Sekarang</button>
-    <footer>© 2024 Irsan Network. Semua Hak Dilindungi.</footer>
+  <div class="loading-screen" id="loader">
+    <h1>Sabar Bosku !</h1>
   </div>
 
-  <script>
-    const orderBtn = document.getElementById('orderBtn');
-    orderBtn.addEventListener('click', () => {
-      // Replace with your Discord server invite link
-      const discordInvite = "https://discord.gg/eUtfp2sF7E";
-      window.open(discordInvite, "_blank");
-    });
-  </script>
+  <div class="top-bar">🥳 Penawaran Terbatas! Hosting Mulai 15K/Bulan</div>
+  <div class="floating-text"> Hosting Ramai Order 🥳</div>
+
+  <div class="container">
+    <h1>PAKET HOSTING IRSAN SAMP</h1>
+
+    <div class="package">
+      <h3> Paket Pelajar</h3>
+      <p>RAM: 128MB, Disk: 2GB, CPU: 100%</p>
+      <p>Slot Player: 100 | PhpMyAdmin & Database: ON</p>
+      <p>Open Port Voice: Ya | OS Bebas Request</p>
+      <p>Harga: 15K/bulan | +10K untuk jasa ON Server</p>
+      <a href="https://discord.gg/eUtfp2sF7E" class="btn-order">Order Sekarang</a>
+    </div>
+
+    <div class="package">
+      <h3> Paket Biasa</h3>
+      <p>RAM: 256MB, Disk: 4GB, CPU: 150%</p>
+      <p>Slot Player: 150 | PhpMyAdmin & Database: ON</p>
+      <p>Open Port Voice: Ya | OS Bebas Request</p>
+      <p>Harga: 25K/bulan | +10K untuk jasa ON Server</p>
+      <a href="https://discord.gg/eUtfp2sF7E" class="btn-order">Order Sekarang</a>
+    </div>
+
+    <div class="package">
+      <h3> Paket Menengah</h3>
+      <p>RAM: 512MB, Disk: 6GB, CPU: 200%</p>
+      <p>Slot Player: 200 | PhpMyAdmin & Database: ON</p>
+      <p>Open Port Voice: Ya | OS Bebas Request</p>
+      <p>Harga: 35K/bulan | +10K untuk jasa ON Server</p>
+      <a href="https://discord.gg/eUtfp2sF7E" class="btn-order">Order Sekarang</a>
+    </div>
+
+    <div class="package">
+      <h3> Paket Sultan</h3>
+      <p>RAM: 1GB, Disk: 10GB, CPU: 250%</p>
+      <p>Slot Player: 250 | PhpMyAdmin & Database: ON</p>
+      <p>Open Port Voice: Ya | OS Bebas Request</p>
+      <p>Harga: 45K/bulan | +10K untuk jasa ON Server</p>
+      <a href="https://discord.gg/eUtfp2sF7E" class="btn-order">Order Sekarang</a>
+    </div>
+
+    <h2>Tentang Kami</h2>
+    <table>
+      <tr><th>Informasi</th><th>Detail</th></tr>
+      <tr><td>Nama</td><td>Irsan Network</td></tr>
+      <tr><td>Spesialis</td><td>Layanan Hosting SA-MP, Web & Voice Server</td></tr>
+      <tr><td>Kontak</td><td><a href="https://discord.gg/eUtfp2sF7E" target="_blank">Gabung Discord</a></td></tr>
+      <tr><td>Keunggulan</td><td>Harga Terjangkau, Support Cepat, Uptime Tinggi, Anti DDoS</td></tr>
+    </table>
+  </div>
+
+  <footer>© 2025 Irsan Network. All rights reserved.</footer>
 </body>
 </html>
-
