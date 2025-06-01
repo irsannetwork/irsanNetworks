@@ -55,7 +55,7 @@
       justify-content: center;
       align-items: center;
       z-index: 9999;
-      animation: fadeOut 2s ease 2s forwards;
+      animation: fadeOut 4s ease 4s forwards;
     }
 
     @keyframes fadeOut {
@@ -216,7 +216,7 @@
   <div class="stars"></div>
 
   <div class="loading-screen" id="loader">
-    <h1>Sabar Bosku !</h1>
+    <h1>Sedang Dialihkan !</h1>
   </div>
 
   <div class="top-bar"> Penawaran Terbatas! Hosting Mulai 15K/Bulan</div>
@@ -224,7 +224,7 @@
 
 <div class="container">
     <h1>PAKET HOSTING IRSAN SAMP</h1>
-    <button id="tryButton" onclick="cobaKeberuntungan()" class="btn-order">🎯 Coba Keberuntungan</button>
+    <button id="tryButton" onclick="cobaKeberuntungan()" class="btn-order"> Coba Keberuntungan</button>
     <div id="resultText" style="display:none; margin-top:20px; font-size:1.6rem; font-weight:bold;"></div>
     
     
@@ -300,10 +300,11 @@
       <tr><td>Spesialis</td><td>Layanan Hosting SA-MP, Web & Voice Server</td></tr>
       <tr><td>Kontak</td><td><a href="https://discord.gg/eUtfp2sF7E" target="_blank">Gabung Discord</a></td></tr>
       <tr><td>Keunggulan</td><td>Harga Terjangkau, Support Cepat, Uptime Tinggi, Anti DDoS, Ping Stabil</td></tr>
+      <tr><td>Garansi</td><td>30 Hari ( 1 x replace )</td></tr>
     </table>
   </div>
 
-  <footer>© 2025 Irsan Network. All rights reserved.</footer>
+  <footer>� 2025 Irsan Network. All rights reserved.</footer>
 </body>
 </html>
 
@@ -334,11 +335,21 @@
         diskon = 20;
       } else if (peluang < 0.99) {
         diskon = 25;
+      } else if (peluang < 0.49) {
+        diskon = 3,5;
+      } else if (peluang < 1.99) {
+        diskon = 30;
+     } else if (peluang < 1.99) {
+        diskon = 40;
+     } else if (peluang < 2.0) {
+        diskon = 45;
+     } else if (peluang < 1.99) {
+        diskon = 35;
       } else {
         diskon = 50; // Sangat langka!
       }
 
-      const teksHasil = `🎉 Selamat! Kamu mendapatkan diskon sebesar <span style="color: yellow">${diskon}%</span> Silahkan Screenshot Kirim Ke Admin`;
+      const teksHasil = ` Selamat! Kamu mendapatkan diskon sebesar <span style="color: yellow">${diskon}%</span> Silahkan Screenshot Kirim Ke Admin`;
 
       document.getElementById("resultText").innerHTML = teksHasil;
       document.getElementById("resultText").style.display = "block";
